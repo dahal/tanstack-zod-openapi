@@ -1,0 +1,33 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{js,ts,tsx,json,md}"
+      run: bun run format
+      stage_fixed: true
+
+    lint:
+      glob: "*.{js,ts,tsx}"
+      run: bun run lint:fix
+      stage_fixed: true
+
+    typecheck:
+      glob: "*.{ts,tsx}"
+      run: bun run typecheck
+
+    test:
+      glob: "*.{js,ts,tsx}"
+      run: bun test
+
+commit-msg:
+  commands:
+    commitlint:
+      run: bunx commitlint --edit {1}
+
+pre-push:
+  commands:
+    build:
+      run: bun run build
+      
+    test-coverage:
+      run: bun run test:coverage

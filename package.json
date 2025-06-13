@@ -1,0 +1,85 @@
+{
+  "name": "tanstack-zod-openapi",
+  "version": "0.1.0",
+  "description": "OpenAPI integration for TanStack Router with Zod schema validation",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage --run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint src",
+    "lint:fix": "biome lint --apply src",
+    "format": "biome format --write src",
+    "check": "biome check --apply src",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run",
+    "commit": "git add . && git cz",
+    "prepare": "lefthook install",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "tanstack",
+    "router",
+    "openapi",
+    "zod",
+    "typescript",
+    "api",
+    "validation"
+  ],
+  "author": "Puru Dahal",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dahal/tanstack-zod-openapi.git"
+  },
+  "peerDependencies": {
+    "@tanstack/router": "^1.0.0",
+    "zod": "^3.20.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.0",
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/js-yaml": "^4.0.0",
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "@vitest/ui": "^1.0.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "lefthook": "^1.11.13",
+    "semantic-release": "^22.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.0.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
