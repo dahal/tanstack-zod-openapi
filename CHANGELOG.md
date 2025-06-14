@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0](https://github.com/dahal/tanstack-zod-openapi/compare/v1.1.0...v1.2.0) (2025-06-14)
+
+
+### 🚀 Features
+
+* add support for ZodEffects schema conversion (refine/transform) ([1159cba](https://github.com/dahal/tanstack-zod-openapi/commit/1159cbaec477af02187f11a7892929b99abc8b16))
+
 ## [1.1.0](https://github.com/dahal/tanstack-zod-openapi/compare/v1.0.1...v1.1.0) (2025-06-14)
 
 
