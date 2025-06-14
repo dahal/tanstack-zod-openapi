@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/dahal/tanstack-zod-openapi/compare/v1.0.1...v1.1.0) (2025-06-14)
+
+
+### 🚀 Features
+
+* add custom output path support to OpenAPI generation script ([c1d7fb3](https://github.com/dahal/tanstack-zod-openapi/commit/c1d7fb3b5a41ed141f56ee52a4fa29e7c7b4b0f0))
+
+
+### 🐛 Bug Fixes
+
+* remove unused @tanstack/router peer dependency ([84f1b8a](https://github.com/dahal/tanstack-zod-openapi/commit/84f1b8a36629c5fd18c3b420fd1ac092d5f2dc66))
+
 ## [1.0.1](https://github.com/dahal/tanstack-zod-openapi/compare/v1.0.0...v1.0.1) (2025-06-14)
 
 
