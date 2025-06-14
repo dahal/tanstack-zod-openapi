@@ -402,9 +402,29 @@ Add to your `package.json`:
 ```json
 {
   "scripts": {
-    "generate-openapi": "tsx scripts/generate-openapi.ts"
+    "generate-openapi": "tsx scripts/generate-openapi.ts",
+    "generate-openapi:docs": "tsx scripts/generate-openapi.ts --output ./docs/api"
   }
 }
+```
+
+### Script Options
+
+The generation script supports the following command line options:
+
+- `-o, --output <path>`: Specify output directory for generated files (default: current directory)
+- `-h, --help`: Show help message
+
+**Examples:**
+```bash
+# Generate files in current directory
+bun run scripts/generate-openapi.ts
+
+# Generate files in custom directory
+bun run scripts/generate-openapi.ts -o ./docs/api
+
+# Generate files in absolute path
+bun run scripts/generate-openapi.ts --output /tmp/openapi
 ```
 
 ## API Reference
