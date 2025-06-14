@@ -177,4 +177,57 @@ describe('zodToOpenAPISchema', () => {
       required: ['user'],
     });
   });
+
+  it('should convert ZodEffects schema by extracting underlying schema', () => {
+    // Test .refine()
+    const refinedSchema = z
+      .string()
+      .refine(
+        (val) => val.length > 3,
+        'String must be longer than 3 characters'
+      );
+    const refinedResult = zodToOpenAPISchema(refinedSchema);
+    expect(refinedResult).toEqual({ type: 'string' });
+
+    // Test .transform()
+    const transformedSchema = z.string().transform((val) => val.toUpperCase());
+    const transformedResult = zodToOpenAPISchema(transformedSchema);
+    expect(transformedResult).toEqual({ type: 'string' });
+
+    // Test .refine() with constraints
+    const constrainedRefinedSchema = z
+      .string()
+      .min(5)
+      .max(20)
+      .email()
+      .refine((val) => !val.includes('test'), 'Cannot contain test');
+    const constrainedResult = zodToOpenAPISchema(constrainedRefinedSchema);
+    expect(constrainedResult).toEqual({
+      type: 'string',
+      minLength: 5,
+      maxLength: 20,
+      format: 'email',
+    });
+
+    // Test nested ZodEffects with object
+    const objectWithEffects = z.object({
+      email: z
+        .string()
+        .email()
+        .refine((val) => !val.includes('spam')),
+      age: z
+        .number()
+        .int()
+        .transform((val) => Math.max(0, val)),
+    });
+    const objectResult = zodToOpenAPISchema(objectWithEffects);
+    expect(objectResult).toEqual({
+      type: 'object',
+      properties: {
+        email: { type: 'string', format: 'email' },
+        age: { type: 'integer' },
+      },
+      required: ['email', 'age'],
+    });
+  });
 });
