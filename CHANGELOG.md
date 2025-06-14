@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/dahal/tanstack-zod-openapi/compare/v1.0.0...v1.0.1) (2025-06-14)
+
+
+### 🐛 Bug Fixes
+
+* replace dynamic requires with proper ES6 imports in generateOpenAPISpec ([e2fb755](https://github.com/dahal/tanstack-zod-openapi/commit/e2fb755fbdbf581f06486530644799aef2dfef88))
+
 ## 1.0.0 (2025-06-14)
 
 
