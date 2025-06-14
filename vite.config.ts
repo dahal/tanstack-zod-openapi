@@ -16,10 +16,9 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`
     },
     rollupOptions: {
-      external: ['@tanstack/router', 'zod', 'js-yaml', 'node:fs', 'node:path', 'fs', 'path'],
+      external: ['zod', 'js-yaml', 'node:fs', 'node:path', 'fs', 'path'],
       output: {
         globals: {
-          '@tanstack/router': 'TanStackRouter',
           'zod': 'Zod',
           'js-yaml': 'jsYaml'
         }
