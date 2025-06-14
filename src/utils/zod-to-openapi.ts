@@ -212,6 +212,14 @@ export function zodToOpenAPISchema(schema: z.ZodSchema): OpenAPISchemaObject {
       }
       return {};
 
+    case 'ZodEffects':
+      if (zodType.typeName === 'ZodEffects') {
+        // For ZodEffects (refine, transform, preprocess), we extract the underlying schema
+        // since OpenAPI doesn't support custom validations/transformations
+        return zodToOpenAPISchema(zodType.schema);
+      }
+      return {};
+
     case 'ZodAny':
     case 'ZodUnknown':
       return {};

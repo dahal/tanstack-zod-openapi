@@ -121,6 +121,11 @@ export interface ZodNeverDef {
   typeName: 'ZodNever';
 }
 
+export interface ZodEffectsDef {
+  typeName: 'ZodEffects';
+  schema: z.ZodSchema;
+}
+
 export type ZodTypeDef =
   | ZodStringDef
   | ZodNumberDef
@@ -144,7 +149,8 @@ export type ZodTypeDef =
   | ZodAnyDef
   | ZodUnknownDef
   | ZodVoidDef
-  | ZodNeverDef;
+  | ZodNeverDef
+  | ZodEffectsDef;
 
 export function getZodDef(schema: z.ZodSchema): ZodTypeDef {
   return (schema as any)._def;
