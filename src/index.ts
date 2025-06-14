@@ -26,6 +26,11 @@ export type {
   OpenAPIRouteRegistry,
 } from './types';
 
+// Import the functions we need for generateOpenAPISpec
+import { getRegistry } from './core/route';
+import { OpenAPIGenerator } from './utils/openapi-generator';
+import { loadAPIConfig, getDefaultConfig } from './utils/config-loader';
+
 // Convenience function to generate OpenAPI spec from registry
 export function generateOpenAPISpec(options: {
   info: {
@@ -39,10 +44,6 @@ export function generateOpenAPISpec(options: {
   }>;
   configPath?: string;
 }) {
-  const { getRegistry } = require('./core/route');
-  const { OpenAPIGenerator } = require('./utils/openapi-generator');
-  const { loadAPIConfig, getDefaultConfig } = require('./utils/config-loader');
-
   const registry = getRegistry();
   const config = loadAPIConfig(options.configPath) || getDefaultConfig();
 

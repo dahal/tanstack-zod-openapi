@@ -541,14 +541,3 @@ This project uses **automated semantic releases**:
 ## License
 
 MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Changelog
-
-### v0.1.0
-- Initial release
-- OpenAPI 3.1 support
-- TanStack Router integration
-- Zod schema validation
-- JSON/YAML generation
-- Configurable output via api.config.json
-- Comprehensive test suite
