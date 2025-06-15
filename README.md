@@ -521,6 +521,32 @@ This package is designed to work seamlessly with TanStack Start projects. Here's
 
 The package automatically discovers routes when they're imported, making it easy to generate comprehensive API documentation.
 
+## Testing Pull Requests
+
+This repository uses [pkg.pr.new](https://pkg.pr.new) to publish preview packages for every pull request, making it easy to test changes before they're merged.
+
+### How to Test a PR
+
+When a pull request is opened, a GitHub Action automatically publishes a preview package. You'll see a comment in the PR with installation instructions:
+
+```bash
+# Install the PR preview package
+npm install https://pkg.pr.new/tanstack-zod-openapi@pr-123
+
+# Or with other package managers
+pnpm add https://pkg.pr.new/tanstack-zod-openapi@pr-123
+bun add https://pkg.pr.new/tanstack-zod-openapi@pr-123
+```
+
+### For Maintainers
+
+The preview package is automatically published when:
+- A new pull request is opened
+- New commits are pushed to an existing PR
+- The main branch receives new commits
+
+The workflow ensures that only PRs with passing tests get published, maintaining quality and reliability.
+
 ## Contributing
 
 Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our development process, commit conventions, and how to submit pull requests.
