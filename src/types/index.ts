@@ -83,25 +83,23 @@ export interface OpenAPISchema {
 }
 
 export interface RouteSchema {
-  body?: z.ZodSchema;
-  query?: z.ZodSchema;
-  params?: z.ZodSchema;
-  headers?: z.ZodSchema;
-  response?: z.ZodSchema;
+  body?: z.ZodType;
+  query?: z.ZodType;
+  params?: z.ZodType;
+  headers?: z.ZodType;
+  response?: z.ZodType;
 }
 
 export interface RouteHandler<T extends RouteSchema = RouteSchema> {
   schema: T;
   handler: (context: {
     request: Request;
-    body: T['body'] extends z.ZodSchema ? z.infer<T['body']> : undefined;
-    query: T['query'] extends z.ZodSchema ? z.infer<T['query']> : undefined;
-    params: T['params'] extends z.ZodSchema ? z.infer<T['params']> : undefined;
-    headers: T['headers'] extends z.ZodSchema
-      ? z.infer<T['headers']>
-      : undefined;
+    body: T['body'] extends z.ZodType ? z.infer<T['body']> : undefined;
+    query: T['query'] extends z.ZodType ? z.infer<T['query']> : undefined;
+    params: T['params'] extends z.ZodType ? z.infer<T['params']> : undefined;
+    headers: T['headers'] extends z.ZodType ? z.infer<T['headers']> : undefined;
   }) => Promise<
-    T['response'] extends z.ZodSchema ? z.infer<T['response']> : any
+    T['response'] extends z.ZodType ? z.infer<T['response']> : unknown
   >;
 }
 
@@ -118,9 +116,10 @@ export interface OpenAPIRouteConfig {
   };
 }
 
-export type OpenAPIRouteDefinition = OpenAPIRouteConfig & {
-  [K in HttpMethod]?: RouteHandler;
-};
+export type OpenAPIRouteDefinition<T extends RouteSchema = RouteSchema> =
+  OpenAPIRouteConfig & {
+    [K in HttpMethod]?: RouteHandler<T>;
+  };
 
 export interface APIConfig {
   tagOrder?: string[];
@@ -147,7 +146,7 @@ export interface APIConfig {
 }
 
 export interface OpenAPIRouteRegistry {
-  routes: Map<string, OpenAPIRouteDefinition>;
-  schemas: Map<string, z.ZodSchema>;
+  routes: Map<string, OpenAPIRouteDefinition<any>>;
+  schemas: Map<string, z.ZodType>;
   config?: APIConfig;
 }

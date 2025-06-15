@@ -33,25 +33,25 @@ export interface ZodDateDef {
 
 export interface ZodArrayDef {
   typeName: 'ZodArray';
-  type: z.ZodSchema;
+  type: z.ZodType;
   minLength: { value: number } | null;
   maxLength: { value: number } | null;
 }
 
 export interface ZodObjectDef {
   typeName: 'ZodObject';
-  shape: () => Record<string, z.ZodSchema>;
+  shape: () => Record<string, z.ZodType>;
 }
 
 export interface ZodUnionDef {
   typeName: 'ZodUnion';
-  options: z.ZodSchema[];
+  options: z.ZodType[];
 }
 
 export interface ZodIntersectionDef {
   typeName: 'ZodIntersection';
-  left: z.ZodSchema;
-  right: z.ZodSchema;
+  left: z.ZodType;
+  right: z.ZodType;
 }
 
 export interface ZodEnumDef {
@@ -71,38 +71,38 @@ export interface ZodLiteralDef {
 
 export interface ZodOptionalDef {
   typeName: 'ZodOptional';
-  innerType: z.ZodSchema;
+  innerType: z.ZodType;
 }
 
 export interface ZodNullableDef {
   typeName: 'ZodNullable';
-  innerType: z.ZodSchema;
+  innerType: z.ZodType;
 }
 
 export interface ZodDefaultDef {
   typeName: 'ZodDefault';
-  innerType: z.ZodSchema;
+  innerType: z.ZodType;
   defaultValue: () => unknown;
 }
 
 export interface ZodRecordDef {
   typeName: 'ZodRecord';
-  valueType?: z.ZodSchema;
+  valueType?: z.ZodType;
 }
 
 export interface ZodMapDef {
   typeName: 'ZodMap';
-  valueType?: z.ZodSchema;
+  valueType?: z.ZodType;
 }
 
 export interface ZodSetDef {
   typeName: 'ZodSet';
-  valueType: z.ZodSchema;
+  valueType: z.ZodType;
 }
 
 export interface ZodTupleDef {
   typeName: 'ZodTuple';
-  items: z.ZodSchema[];
+  items: z.ZodType[];
 }
 
 export interface ZodAnyDef {
@@ -123,7 +123,7 @@ export interface ZodNeverDef {
 
 export interface ZodEffectsDef {
   typeName: 'ZodEffects';
-  schema: z.ZodSchema;
+  schema: z.ZodType;
 }
 
 export type ZodTypeDef =
@@ -152,6 +152,6 @@ export type ZodTypeDef =
   | ZodNeverDef
   | ZodEffectsDef;
 
-export function getZodDef(schema: z.ZodSchema): ZodTypeDef {
+export function getZodDef(schema: z.ZodType): ZodTypeDef {
   return (schema as any)._def;
 }
