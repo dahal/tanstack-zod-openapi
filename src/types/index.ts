@@ -94,10 +94,12 @@ export interface RouteHandler<T extends RouteSchema = RouteSchema> {
   schema: T;
   handler: (context: {
     request: Request;
-    body: T['body'] extends z.ZodSchema ? z.infer<T['body']> : never;
-    query: T['query'] extends z.ZodSchema ? z.infer<T['query']> : never;
-    params: T['params'] extends z.ZodSchema ? z.infer<T['params']> : never;
-    headers: T['headers'] extends z.ZodSchema ? z.infer<T['headers']> : never;
+    body: T['body'] extends z.ZodSchema ? z.infer<T['body']> : undefined;
+    query: T['query'] extends z.ZodSchema ? z.infer<T['query']> : undefined;
+    params: T['params'] extends z.ZodSchema ? z.infer<T['params']> : undefined;
+    headers: T['headers'] extends z.ZodSchema
+      ? z.infer<T['headers']>
+      : undefined;
   }) => Promise<
     T['response'] extends z.ZodSchema ? z.infer<T['response']> : any
   >;
