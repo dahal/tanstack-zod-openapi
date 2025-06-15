@@ -1,4 +1,8 @@
-import type { OpenAPIRouteDefinition, OpenAPIRouteRegistry } from '../types';
+import type {
+  OpenAPIRouteDefinition,
+  OpenAPIRouteRegistry,
+  RouteSchema,
+} from '../types';
 
 let globalRegistry: OpenAPIRouteRegistry = {
   routes: new Map(),
@@ -14,9 +18,9 @@ export function setRegistry(registry: OpenAPIRouteRegistry): void {
 }
 
 export function createOpenAPIRoute(path: string) {
-  return function defineRoute(
-    definition: OpenAPIRouteDefinition
-  ): OpenAPIRouteDefinition {
+  return function defineRoute<T extends RouteSchema>(
+    definition: OpenAPIRouteDefinition<T>
+  ): OpenAPIRouteDefinition<T> {
     if (globalRegistry.routes.has(path)) {
       console.warn(`Route ${path} already exists and will be overwritten`);
     }

@@ -27,7 +27,7 @@ export interface OpenAPISchemaObject {
   not?: OpenAPISchemaObject;
 }
 
-export function zodToOpenAPISchema(schema: z.ZodSchema): OpenAPISchemaObject {
+export function zodToOpenAPISchema(schema: z.ZodType): OpenAPISchemaObject {
   const zodType = getZodDef(schema);
 
   switch (zodType.typeName) {

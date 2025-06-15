@@ -234,7 +234,7 @@ export class OpenAPIGenerator {
   private generateSchemas(): Record<string, OpenAPISchemaObject> {
     const schemas: Record<string, OpenAPISchemaObject> = {};
 
-    for (const [name, schema] of this.registry.schemas.entries()) {
+    for (const [name, schema] of Array.from(this.registry.schemas.entries())) {
       schemas[name] = zodToOpenAPISchema(schema);
     }
 
