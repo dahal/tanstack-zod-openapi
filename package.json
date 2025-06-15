@@ -31,7 +31,8 @@
     "release:dry": "semantic-release --dry-run",
     "commit": "git add . && git cz",
     "prepare": "lefthook install",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "bun run build",
+    "pr:new": "bunx pr:new publish --compact"
   },
   "keywords": [
     "tanstack",
