@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.0](https://github.com/dahal/tanstack-zod-openapi/compare/v1.2.0...v1.3.0) (2025-06-15)
+
+
+### 🚀 Features
+
+* improve TypeScript type safety for route handlers ([2dcb028](https://github.com/dahal/tanstack-zod-openapi/commit/2dcb0282d0663c0bd37cedd8470530f61e26872e))
+
+
+### 🐛 Bug Fixes
+
+* resolve type inference issue for params, query, and headers ([22be0b6](https://github.com/dahal/tanstack-zod-openapi/commit/22be0b64ae81848a1dad82cf6ea7a587d12910b8))
+
 ## [1.2.0](https://github.com/dahal/tanstack-zod-openapi/compare/v1.1.0...v1.2.0) (2025-06-14)
 
 
